@@ -3,6 +3,10 @@ a {
 	text-decoration: none;
 }
 
+a:hover {
+ cursor:pointer;
+}
+
 .gm-card.mdl-card {
 	width: auto;
 	margin-bottom: 15px

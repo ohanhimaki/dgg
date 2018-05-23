@@ -1,0 +1,359 @@
+<div id="backgroundtools">
+    <h3>
+      {{ title }}
+    </h3>
+
+
+
+
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a (click)="hideResolution=!hideResolution">
+        <h5>
+        Change resolution
+        </h5>
+      </a>
+
+      <div [hidden]="hideResolution">
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="tt2" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="tt2">
+            <!--             Tooltiptexthere -->
+            You can change resolution here. Resolution updates when value is changed. Default resolution is 1920x1080 also known as fullHD.
+          </div>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="resolutionwidth" value="1920">
+          <label class="mdl-textfield__label" for="sample4">Width</label>
+          <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="resolutionheight" value="1080">
+          <label class="mdl-textfield__label" for="sample4">Height</label>
+          <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a (click)="hideRectangle=!hideRectangle">
+        <h5>
+        Add rectangle
+      </h5>
+      </a>
+
+      <div [hidden]="hideRectangle">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttrect" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttrect">
+            <!--             Tooltiptexthere -->
+            Rectangle shows up after editing. You are positioning top left corner of rectangle. Remember to save!
+
+          </div>
+        </div>
+
+
+
+
+        <!--         Slider+textboxcombo from here -->
+        <p>
+          Position X
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionX" type="range" min="0" max="1920" value="960" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield ">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectanglePosistionX" onChange="drawrect()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+        <!--         to here -->
+        <p>
+          Position Y
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionY" type="range" min="0" max="1080" value="540" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectanglePosistionY" onChange="drawrect()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Width
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleWidth" type="range" min="0" max="1920" value="400" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleWidth" onChange="drawrect()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Height
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleHeight" type="range" min="0" max="1080" value="400" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleHeight" onChange="drawrect()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+        <p>
+          Color
+        </p>
+
+        <input class="jscolor mdl-textfield__input" [(ngModel)]="rectangleColor" value="000000" oninput="drawrect()" onChange="drawrect()">
+        <p>
+          Alpha%
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleAlpha" type="range" min="0" max="100" value="80" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+        </div>
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleAlpha" onChange="drawrect()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <!--           <button type="button" id="newrect" onClick="rectbutton()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">New rectangle</button> -->
+        <button type="button" id="saverect" onClick="saverect()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save rectangle</button>
+
+
+      </div>
+
+    </div>
+  </div>
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a (click)="hideTexttools=!hideTexttools">
+        <h5>
+        Add text
+      </h5>
+      </a>
+
+      <div [hidden]="hideTexttools">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="tttext" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="tttext">
+            <!--             Tooltiptexthere -->
+            Text shows up after editing. Text is centered. Remember to save!
+          </div>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="addtexttext" oninput="addtext()" onchange="addtext()">
+          <label class="mdl-textfield__label" for="sample3">Text</label>
+        </div>
+
+        <p>
+          Position X
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="addtextposx" type="range" min="0" max="1920" value="960" tabindex="0" oninput="addtext()" onchange="addtext()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextposxtext">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Position Y
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="addtextposy" type="range" min="0" max="1080" value="540" tabindex="0" oninput="addtext()" onchange="addtext()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextposytext">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+
+        <p>
+          Font
+        </p>
+        <div class="textboxwidth samerow">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextsize" onchange="addtext()" oninput="addtext()" value="72">
+            <label class="mdl-textfield__label" for="addtextsize">Size</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+
+
+
+        <form class="samerow">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="addtextfont" oninput="addtext()" onchange="addtext()">
+  <option value="Arial">Arial</option>
+  <option value="Impact">Impact</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Verdana">Verdana</option>
+</select>
+
+        </form>
+
+        <input class="jscolor mdl-textfield__input samerow" id="addtextcolor" onchange="addtext()" value="FFFFFF" oninput="addtext()" onchange="addtext()">
+        <!--         to here -->
+        <p>
+          Alpha%
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="addtextalpha" type="range" min="0" max="100" value="80" tabindex="0" onInput="addtext()" onChange="addtext()">
+        </div>
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextalphatext" onChange="addtext()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="savetext()">Save text</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a (click)="hideImageAdd=!hideImageAdd">
+        <h5>
+        Add image
+      </h5>
+      </a>
+
+      <div [hidden]="hideImageAdd">
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttimg" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttimg">
+            <!--             Tooltiptexthere -->
+            Image shows up after file selected. You are positioning top left corner. Remember to save!
+
+          </div>
+        </div>
+
+        <label class="mdl-button mdl-js-button mdl-button--icon mdl-button--file">
+<i class="material-icons">cloud_upload</i><input type="file" id="addimagefile">
+</label>
+
+        <p>
+          Position X
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="addimageposx" type="range" min="0" max="1920" value="0" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimageposxtext">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Position Y
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="addimageposy" type="range" min="0" max="1080" value="0" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimageposytext">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Width%
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="addimagewidth" type="range" min="0" max="200" value="100" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimagewidthtext">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Height%
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="addimageheight" type="range" min="0" max="200" value="100" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimageheighttext">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <button type="button" onClick="saveimage();" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save image</button>
+
+      </div>
+
+    </div>
+  </div>
+      <div class="changetoolsbuttons">
+
+
+
+
+
+    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored changetoolsbutton" id="showtexttools">Continue to text tools</button>
+    <label class="mdl-button mdl-js-button mdl-button--icon">
+<i class="material-icons" onclick="refreshcanvas()">sync</i>
+</label>
+    <label class="mdl-button mdl-js-button mdl-button--icon">
+<i class="material-icons" onclick="undocanvas()">undo</i>
+</label>
+    <label class="mdl-button mdl-js-button mdl-button--icon">
+<i class="material-icons" onclick="redocanvas()">redo</i>
+</label>
+
+  </div>
+</div>

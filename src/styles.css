@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+a {
+	text-decoration: none;
+}
+
+.gm-card.mdl-card {
+	width: auto;
+	margin-bottom: 15px
+}
+
+.tyokalukortti {
+	min-height: 0
+}
+
+.sliderwidth {
+	display: inline-block;
+	width: 70%;
+}
+
+.textboxwidth {
+	display: inline-block;
+	width: 25%;
+}
+
+.toolcard p {
+	margin: 0px 0px;
+	display: flex;
+}
+
+select {
+	padding: 0!important;
+	margin-bottom: 20px!important;
+}
+
+#addimagefile {
+	display: none;
+}
+
+.samerow {
+	display: inline-block;
+	width: 30%;
+}
+
+.changetoolsbuttons {
+	display: flex;
+	justify-content: center;
+}
+
+.changetoolsbutton {
+	margin-bottom: 15px;
+	display: flex;
+	justify-content: center;
+}
+
+#myCanvas {
+	position: relative;
+	z-index: 20;
+	background: url('./images/backgroundtodggscoregraphics.jpg');
+	background-size: 100% 100%;
+}
+
+.scrollable {
+	overflow: auto;
+}
+
+@media (max-width: 839px) {
+	.scrollable {
+		max-height: 40%!important;
+	}
+}
+
+.tooltip {
+	position: absolute;
+	align-content: right;
+	top: 30px;
+	right: 10px;
+	z-index: 999;
+}
+
+.mdl-card {
+    overflow: visible;
+    z-index: auto;
+}

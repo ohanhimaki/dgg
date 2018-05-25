@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {DisplayerService} from '../displayer.service';
+
 @Component({
   selector: 'app-score-graphics',
   templateUrl: './score-graphics.component.html',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoreGraphicsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private displayerService: DisplayerService) { }
+
+  private hideBackgroundEditing = false;
+
+  changeTools(){
+    this.hideBackgroundEditing = !this.hideBackgroundEditing;
+  }
 
   ngOnInit() {
   }

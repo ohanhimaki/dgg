@@ -1,0 +1,350 @@
+<div id="texttools">
+  <h3>
+    Info import and placing tools
+  </h3>
+
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a id="sinfo">
+        <h5>
+        Pars, names and scores
+      </h5>
+      </a>
+
+      <div class="hidden toolcard" id="info">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttinfo" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttinfo">
+            <!--             Tooltiptexthere -->
+            Select correct amount of players and give player names and scores. You can give scores divided with "," or spaces. You can paste scores that are divided with tab ex. Discgolfmetrix.
+          </div>
+        </div>
+        <p>
+          Players
+        </p>
+        <form>
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="playersamount">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+
+        </form>
+
+
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="coursepars">
+          <label class="mdl-textfield__label" for="coursepars">Hole pars</label>
+        </div>
+
+        <div id="player1">
+
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playername1">
+            <label class="mdl-textfield__label" for="sample3">First Player</label>
+          </div>
+
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playerscore1">
+            <label class="mdl-textfield__label" for="playerscore1">Scores</label>
+          </div>
+        </div>
+
+        <div id="player2">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playername2">
+            <label class="mdl-textfield__label" for="sample3">Second Player</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playerscore2">
+            <label class="mdl-textfield__label" for="playerscore2">Scores</label>
+          </div>
+        </div>
+
+        <div id="player3">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playername3">
+            <label class="mdl-textfield__label" for="sample3">Third Player</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playerscore3">
+            <label class="mdl-textfield__label" for="playerscore3">Scores</label>
+          </div>
+        </div>
+
+        <div id="player4">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playername4">
+            <label class="mdl-textfield__label" for="sample3">Fourth Player</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playerscore4">
+            <label class="mdl-textfield__label" for="playerscore4">Scores</label>
+          </div>
+        </div>
+
+        <div id="player5">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playername5">
+            <label class="mdl-textfield__label" for="sample3">Fifth Player</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playerscore5">
+            <label class="mdl-textfield__label" for="playerscore5">Scores</label>
+          </div>
+        </div>
+
+        <div id="player6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playername6">
+            <label class="mdl-textfield__label" for="sample3">Sixth player</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="playerscore6">
+            <label class="mdl-textfield__label" for="playerscore6">Scores</label>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a id="slayout">
+        <h5>
+        Text layout
+      </h5>
+      </a>
+
+      <div class="hidden toolcard" id="layout">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttlayout" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttlayout">
+            <!--             Tooltiptexthere -->
+            Select Vertical or Horizontal layout. You are positioning topleft corner. You can disable score depending colors.
+          </div>
+        </div>
+
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Vertical">
+<input type="radio" id="Vertical" class="mdl-radio__button" name="playersplacement" value="ver" checked onchange="scoredirection()">
+<span class="mdl-radio__label">Vertical</span>
+</label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Horizontal">
+<input type="radio" id="Horizontal" class="mdl-radio__button" name="playersplacement" value="hor" onchange="scoredirection()">
+<span class="mdl-radio__label">Horizontal</span>
+</label>
+
+        <p>
+          Position X
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="scoretextposx" type="range" min="0" max="1920" value="200" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextposxtext" oninput="scoredirection()" onchange="scoredirection()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+        <!--         to here -->
+        <p>
+          Position Y
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="scoretextposy" type="range" min="0" max="1920" value="200" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextposytext" oninput="scoredirection()" onchange="scoredirection()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Player to Player
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="scoretextpp" type="range" min="0" max="1920" value="430" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextpptext" oninput="scoredirection()" onchange="scoredirection()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+
+        <p>
+          Name to hole score
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="scoretextnh" type="range" min="-1000" max="1000" value="300" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextnhtext" oninput="scoredirection()" onchange="scoredirection()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Hole score to total
+        </p>
+        <div class="sliderwidth">
+          <input class="mdl-slider mdl-js-slider" id="scoretextht" type="range" min="-1000" max="1000" value="200" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+        </div>
+
+        <div class="textboxwidth">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretexthttext" oninput="scoredirection()" onchange="scoredirection()">
+
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+        <p>
+          Player name font
+        </p>
+        <div class="textboxwidth samerow">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" id="scoretextnamesize" oninput="scoredirection()" onchange="scoredirection()">
+            <label class="mdl-textfield__label" for="scoretextnamesize">Size</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+
+
+
+        <form class="samerow">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="scoretextnamefont" oninput="scoredirection()" onchange="scoredirection()">
+  <option value="Arial">Arial</option>
+  <option value="Impact">Impact</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Verdana">Verdana</option>
+</select>
+
+        </form>
+
+        <input class="jscolor mdl-textfield__input samerow" id="scoretextnamecolor" oninput="scoredirection()" onchange="scoredirection()" value="F3F3F3">
+
+        <p>
+          Hole score font
+        </p>
+
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scoretextholecolorscore">
+
+          <input type="checkbox" id="scoretextholecolorscore" class="mdl-switch__input" checked>
+          <span class="mdl-switch__label">Use color depending on score</span>
+        </label>
+
+        <div class="textboxwidth samerow">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" id="scoretextholesize" oninput="scoredirection()" onchange="scoredirection()">
+            <label class="mdl-textfield__label" for="scoretextholesize">Size</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+
+
+
+        <form class="samerow">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="scoretextholefont" oninput="scoredirection()" onchange="scoredirection()">
+  <option value="Arial">Arial</option>
+  <option value="Impact">Impact</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Verdana">Verdana</option>
+</select>
+
+        </form>
+        <input class="jscolor mdl-textfield__input samerow" id="scoretextholecolor" oninput="scoredirection()" onchange="scoredirection()" value="F3F3F3">
+
+
+
+        <p>
+          Round total font
+        </p>
+        <div class="textboxwidth samerow">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" id="scoretexttotalsize" oninput="scoredirection()" onchange="scoredirection()">
+            <label class="mdl-textfield__label" for="sample4">Size</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+        </div>
+
+
+
+
+        <form class="samerow">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="scoretexttotalfont" oninput="scoredirection()" onchange="scoredirection()">
+  <option value="Arial">Arial</option>
+  <option value="Impact">Impact</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Verdana">Verdana</option>
+</select>
+
+        </form>
+
+        <input class="jscolor mdl-textfield__input samerow" id="scoretexttotalcolor" oninput="scoredirection()" onchange="scoredirection()" value="F3F3F3">
+
+      </div>
+
+    </div>
+  </div>
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a id="sready">
+        <h5>
+        Make scorecards
+      </h5>
+      </a>
+
+      <div class="hidden toolcard" id="ready">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttready" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttready">
+            <!--             Tooltiptexthere -->
+            Score graphics are ready? Press Start processing and wait for zip to start downloading.
+          </div>
+        </div>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="zipmakercaller()">Start processing</button>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="changetoolsbuttons">
+
+
+    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored changetoolsbutton" (click)="changeTools()">Go back to background editing tools</button>
+
+  </div>
+</div>

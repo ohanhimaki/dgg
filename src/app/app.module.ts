@@ -9,6 +9,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ScoreGraphicsComponent } from './score-graphics/score-graphics.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { BackgroundEditingComponent } from './background-editing/background-editing.component';
+import { ScoreEditingComponent } from './score-editing/score-editing.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { BackgroundEditingComponent } from './background-editing/background-edit
     FooterComponent,
     ScoreGraphicsComponent,
     CanvasComponent,
-    BackgroundEditingComponent
+    BackgroundEditingComponent,
+    ScoreEditingComponent,
   ],
   imports: [
     BrowserModule,

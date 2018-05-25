@@ -6,14 +6,13 @@ import { CanvasComponent } from '../canvas/canvas.component';
 import { DisplayerService } from '../displayer.service';
 import { ScoreGraphicsComponent } from '../score-graphics/score-graphics.component';
 import { CanvasComponent } from '../canvas/canvas.component';
-
+import {CanvasHandleService} from '../canvas-handle.service'
 
 
 @Component({
   selector: 'app-background-editing',
   templateUrl: './background-editing.component.html',
-  styleUrls: ['./background-editing.component.css'],
-  providers: [CanvasComponent]
+  styleUrls: ['./background-editing.component.css']
 })
 
  // private backgroundEditing: BackgroundEditing
@@ -22,7 +21,7 @@ import { CanvasComponent } from '../canvas/canvas.component';
 
 export class BackgroundEditingComponent implements OnInit {
 
-  constructor(private scoreGraphicsComponent: ScoreGraphicsComponent; private canvasComponent: CanvasComponent) { }
+  constructor(public scoreGraphicsComponent: ScoreGraphicsComponent; private canvasHandle: CanvasHandleService) { }
 
     title = 'Background editing tools';
 
@@ -41,8 +40,11 @@ export class BackgroundEditingComponent implements OnInit {
 
   changeTools(){
     this.scoreGraphicsComponent.changeTools();
-    this.ctx = this.canvasComponent.giveCanvas();
     console.log(this.ctx);
+    console.log(this.canvasHandle.givectx());
+    this.ctx = this.canvasHandle.givectx();
+    this.drawRect();
+
 
 
   }
@@ -60,11 +62,12 @@ export class BackgroundEditingComponent implements OnInit {
 
   drawRect() {
 
-    	ctx.beginPath();
-    	ctx.globalAlpha = 100;
-    	ctx.fillStyle = '#' + f5f5f5;
-    	ctx.rect(0, 0, 300, 300);
-    	ctx.fill();
+    this.ctx.beginPath();
+    	this.ctx.globalAlpha = 100;
+    	this.ctx.fillStyle = '#' + "f5f5f5";
+    	this.ctx.rect(0, 0, 300, 300);
+    	this.ctx.fill();
+
 
     }
 

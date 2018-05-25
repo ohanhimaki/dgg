@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 
-import {BackgroundEditingComponent} from '../background-editing/background-editing.component'
+import {CanvasHandleService} from '../canvas-handle.service'
 
 
 @Component({
@@ -9,16 +9,20 @@ import {BackgroundEditingComponent} from '../background-editing/background-editi
   styleUrls: ['./canvas.component.css']
 })
 export class CanvasComponent implements AfterViewInit {
+
   @ViewChild('myCanvas') canvasRef: ElementRef;
 
-  private context: CanvasRenderingContext2D;
-
-  constructor() { }
+private context: CanvasRenderingContext2D;
 
 
-  ngAfterViewInit() {
+  constructor(private canvasHandle: CanvasHandleService) { }
 
-    this.context = (this.canvasRef.nativeElement as HTMLCanvasElement).getContext("2d");
+
+  ngAfterViewInit(): void {
+    console.log(this.context);
+    this.context = (<HTMLCanvasElement>this.canvasRef.nativeElement).getContext("2d");
+    this.draw();
+    this.canvasHandle.context = this.context;
 
 
   }
@@ -32,12 +36,23 @@ export class CanvasComponent implements AfterViewInit {
   }
 
 
-  giveCanvas(){
+  private giveCanvas(){
     console.log(this.context);
+    console.log("voi vittu toimi");
     return this.context;
     this.draw();
 
   }
+
+  private draw2() {
+    console.log(this.context);
+    this.context.beginPath();
+    this.context.moveTo(0,30);
+    this.context.lineTo(300,150);
+    this.context.stroke();
+  }
+
+
 
 
 

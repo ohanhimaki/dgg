@@ -27,21 +27,23 @@ private context: CanvasRenderingContext2D;
 
   }
 
-  private draw() {
-    console.log(this.context);
-    this.context.beginPath();
-    this.context.moveTo(0,0);
-    this.context.lineTo(300,150);
-    this.context.stroke();
-  }
+
 
 
   private giveCanvas(){
     console.log(this.context);
     console.log("voi vittu toimi");
     return this.context;
-    this.draw();
 
+
+  }
+
+  private draw() {
+    console.log(this.context);
+    this.context.beginPath();
+    this.context.moveTo(0,0);
+    this.context.lineTo(300,150);
+    this.context.stroke();
   }
 
   private draw2() {

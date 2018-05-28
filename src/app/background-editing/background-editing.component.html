@@ -1,6 +1,6 @@
+<script defer src="../scripts/jscolor.js"></script>
 
-
-<div id="backgroundtools">
+<div id="backgroundtools" ng-init="saveCanvas()">
     <h3>
       {{ title }}
     </h3>
@@ -27,12 +27,12 @@
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="resolutionwidth" value="1920">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="canvasResolutionWidth" (keyup)="canvasResolution()" value="1920">
           <label class="mdl-textfield__label" for="sample4">Width</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="resolutionheight" value="1080">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="canvasResolutionHeight" (keyup)="canvasResolution()" value="1080">
           <label class="mdl-textfield__label" for="sample4">Height</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
@@ -69,12 +69,12 @@
           Position X
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionX" type="range" min="0" max="1920" value="960" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionX" type="range" min="0" max="1920" value="960" tabindex="0" (mousemove)="drawRect()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield ">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectanglePosistionX" onChange="drawrect()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectanglePosistionX" (change)="drawRect()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -84,12 +84,12 @@
           Position Y
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionY" type="range" min="0" max="1080" value="540" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionY" type="range" min="0" max="1080" value="540" tabindex="0" (mousemove)="drawRect()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectanglePosistionY" onChange="drawrect()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectanglePosistionY" (change)="drawRect()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -99,12 +99,12 @@
           Width
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleWidth" type="range" min="0" max="1920" value="400" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleWidth" type="range" min="0" max="1920" value="400" tabindex="0" (mousemove)="drawRect()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleWidth" onChange="drawrect()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleWidth" (change)="drawRect()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -114,12 +114,12 @@
           Height
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleHeight" type="range" min="0" max="1080" value="400" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleHeight" type="range" min="0" max="1080" value="400" tabindex="0" (mousemove)="drawRect()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleHeight" onChange="drawrect()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleHeight" (change)="drawRect()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -128,23 +128,23 @@
           Color
         </p>
 
-        <input class="jscolor mdl-textfield__input" [(ngModel)]="rectangleColor" value="000000" oninput="drawrect()" onChange="drawrect()">
+        <input class="jscolor mdl-textfield__input" [(ngModel)]="rectangleColor" value="000000" oninput="drawrect()" (change)="drawRect()">
         <p>
           Alpha%
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleAlpha" type="range" min="0" max="100" value="80" tabindex="0" onInput="drawrect()" onChange="drawrect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectangleAlpha" type="range" min="0" max="100" value="80" tabindex="0" (mousemove)="drawRect()">
         </div>
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleAlpha" onChange="drawrect()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="rectangleAlpha" (change)="drawRect()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
         </div>
 
         <!--           <button type="button" id="newrect" onClick="rectbutton()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">New rectangle</button> -->
-        <button type="button" id="saverect" onClick="saverect()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save rectangle</button>
+        <button type="button" id="saverect" (click)="saveCanvas(); hideRectangle=!hideRectangle" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save rectangle</button>
 
 
       </div>

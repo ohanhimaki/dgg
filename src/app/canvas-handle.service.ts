@@ -10,7 +10,7 @@ export class CanvasHandleService {
 
   constructor() { }
 
-  private context: CanvasRenderingContext2D;
+  public context: CanvasRenderingContext2D;
 
   givectx(){
     return this.context;

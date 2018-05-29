@@ -21,7 +21,7 @@ private context: CanvasRenderingContext2D;
   ngAfterViewInit(): void {
     console.log(this.context);
     this.context = (<HTMLCanvasElement>this.canvasRef.nativeElement).getContext("2d");
-    this.draw();
+
     this.canvasHandle.context = this.context;
 
 
@@ -30,29 +30,9 @@ private context: CanvasRenderingContext2D;
 
 
 
-  private giveCanvas(){
-    console.log(this.context);
-    console.log("voi vittu toimi");
-    return this.context;
 
 
-  }
 
-  private draw() {
-    console.log(this.context);
-    this.context.beginPath();
-    this.context.moveTo(0,0);
-    this.context.lineTo(300,150);
-    this.context.stroke();
-  }
-
-  private draw2() {
-    console.log(this.context);
-    this.context.beginPath();
-    this.context.moveTo(0,30);
-    this.context.lineTo(300,150);
-    this.context.stroke();
-  }
 
 
 

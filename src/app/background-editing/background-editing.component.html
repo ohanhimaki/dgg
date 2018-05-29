@@ -1,6 +1,4 @@
-<script defer src="../scripts/jscolor.js"></script>
-
-<div id="backgroundtools" ng-init="saveCanvas()">
+<div id="backgroundtools">
     <h3>
       {{ title }}
     </h3>
@@ -10,7 +8,7 @@
 
   <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
     <div class="mdl-card__supporting-text">
-      <a (click)="hideResolution=!hideResolution">
+      <a (click)="refreshCanvas(); hideResolution=!hideResolution">
         <h5>
         Change resolution
         </h5>
@@ -27,12 +25,12 @@
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="canvasResolutionWidth" (keyup)="canvasResolution()" value="1920">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="canvasResolutionWidth" (keyup)="canvasResolution()">
           <label class="mdl-textfield__label" for="sample4">Width</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="canvasResolutionHeight" (keyup)="canvasResolution()" value="1080">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="canvasResolutionHeight" (keyup)="canvasResolution()" >
           <label class="mdl-textfield__label" for="sample4">Height</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
@@ -43,7 +41,7 @@
   </div>
   <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
     <div class="mdl-card__supporting-text">
-      <a (click)="hideRectangle=!hideRectangle">
+      <a (click)="refreshCanvas(); hideRectangle=!hideRectangle">
         <h5>
         Add rectangle
       </h5>
@@ -69,7 +67,7 @@
           Position X
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionX" type="range" min="0" max="1920" value="960" tabindex="0" (mousemove)="drawRect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionX" type="range" min="0" max="{{canvasResolutionWidth}}" value="960" tabindex="0" (mousemove)="drawRect()">
         </div>
 
         <div class="textboxwidth">
@@ -128,7 +126,7 @@
           Color
         </p>
 
-        <input class="jscolor mdl-textfield__input" [(ngModel)]="rectangleColor" value="000000" oninput="drawrect()" (change)="drawRect()">
+        <input class="mdl-textfield__input" [(colorPicker)]="rectangleColor" [style.background]="rectangleColor" [value]="rectangleColor" [cpPosition]="'bottom'" (colorPickerChange)="drawRect()">
         <p>
           Alpha%
         </p>
@@ -153,13 +151,13 @@
   </div>
   <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
     <div class="mdl-card__supporting-text">
-      <a (click)="hideTexttools=!hideTexttools">
+      <a (click)="refreshCanvas(); hideAddText=!hideAddText">
         <h5>
         Add text
       </h5>
       </a>
 
-      <div [hidden]="hideTexttools">
+      <div [hidden]="hideAddText">
 
         <!--           TOOLTIP -->
         <div class="tooltip">
@@ -171,7 +169,7 @@
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="addtexttext" oninput="addtext()" onchange="addtext()">
+          <input class="mdl-textfield__input" type="text" [(ngModel)]="addTextText" (keyup)="addText()" (change)="addText()">
           <label class="mdl-textfield__label" for="sample3">Text</label>
         </div>
 
@@ -179,12 +177,12 @@
           Position X
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="addtextposx" type="range" min="0" max="1920" value="960" tabindex="0" oninput="addtext()" onchange="addtext()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="addTextPosX" type="range" min="0" max="1920" value="960" tabindex="0" (mousemove)="addText()" (change)="addText()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextposxtext">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addTextPosX">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -194,12 +192,12 @@
           Position Y
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="addtextposy" type="range" min="0" max="1080" value="540" tabindex="0" oninput="addtext()" onchange="addtext()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="addTextPosY" type="range" min="0" max="1080" value="540" tabindex="0" (mousemove)="addText()" (change)="addText()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextposytext">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addTextPosY">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -211,7 +209,7 @@
         </p>
         <div class="textboxwidth samerow">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextsize" onchange="addtext()" oninput="addtext()" value="72">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addTextSize" (change)="addText()" (keyup)="addText()" value="72">
             <label class="mdl-textfield__label" for="addtextsize">Size</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -220,8 +218,8 @@
 
 
 
-        <form class="samerow">
-          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="addtextfont" oninput="addtext()" onchange="addtext()">
+        <form class="samerow" #f="ngForm" >
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" name="addtextfontselector" [(ngModel)]="addTextFont" (mousemove)="addText()" (change)="addText()">
   <option value="Arial">Arial</option>
   <option value="Impact">Impact</option>
   <option value="Courier New">Courier New</option>
@@ -230,30 +228,30 @@
 
         </form>
 
-        <input class="jscolor mdl-textfield__input samerow" id="addtextcolor" onchange="addtext()" value="FFFFFF" oninput="addtext()" onchange="addtext()">
+        <input class="mdl-textfield__input" [(colorPicker)]="addTextColor" [style.background]="addTextColor" [value]="addTextColor" [cpPosition]="'bottom'" (colorPickerChange)="addText()">
         <!--         to here -->
         <p>
           Alpha%
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="addtextalpha" type="range" min="0" max="100" value="80" tabindex="0" onInput="addtext()" onChange="addtext()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="addTextAlpha" type="range" min="0" max="100" value="80" tabindex="0" (mousemove)="addText()" (change)="addText()">
         </div>
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addtextalphatext" onChange="addtext()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addTextAlpha" (change)="addText()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
         </div>
 
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="savetext()">Save text</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="saveCanvas(); hideAddText=!hideAddText">Save text</button>
       </div>
 
     </div>
   </div>
   <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
     <div class="mdl-card__supporting-text">
-      <a (click)="hideImageAdd=!hideImageAdd">
+      <a (click)="refreshCanvas(); hideImageAdd=!hideImageAdd">
         <h5>
         Add image
       </h5>
@@ -271,19 +269,19 @@
         </div>
 
         <label class="mdl-button mdl-js-button mdl-button--icon mdl-button--file">
-<i class="material-icons">cloud_upload</i><input type="file" id="addimagefile">
+<i class="material-icons">cloud_upload</i><input type="file" (change)="addImage($event)" id="addimagefile">
 </label>
 
         <p>
           Position X
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="addimageposx" type="range" min="0" max="1920" value="0" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="addImagePosX" type="range" min="0" max="1920" value="0" tabindex="0" (mousemove)="imagePlacing()" (change)="imagePlacing()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimageposxtext">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addImagePosX">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -293,12 +291,12 @@
           Position Y
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="addimageposy" type="range" min="0" max="1080" value="0" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="addImagePosY" type="range" min="0" max="1080" value="0" tabindex="0" (mousemove)="imagePlacing()" (change)="imagePlacing()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimageposytext">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addImagePosY">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -308,12 +306,12 @@
           Width%
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="addimagewidth" type="range" min="0" max="200" value="100" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="addImageWidth" type="range" min="0" max="200" value="100" tabindex="0" (mousemove)="imagePlacing()" (change)="imagePlacing()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimagewidthtext">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addImageWidth">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -323,18 +321,18 @@
           Height%
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="addimageheight" type="range" min="0" max="200" value="100" tabindex="0" oninput="imageplacing()" onchange="imageplacing()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="addImageHeight" type="range" min="0" max="200" value="100" tabindex="0" (mousemove)="imagePlacing()" (change)="imagePlacing()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="addimageheighttext">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="addImageHeight">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
         </div>
 
-        <button type="button" onClick="saveimage();" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save image</button>
+        <button type="button" (click)="saveCanvas(); hideImageAdd=!hideImageAdd" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save image</button>
 
       </div>
 
@@ -348,13 +346,13 @@
 
     <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored changetoolsbutton" id="showtexttools" (click)="changeTools()">Continue to text tools</button>
     <label class="mdl-button mdl-js-button mdl-button--icon">
-<i class="material-icons" onclick="refreshcanvas()">sync</i>
+<i class="material-icons" (click)="refreshCanvas()">sync</i>
 </label>
     <label class="mdl-button mdl-js-button mdl-button--icon">
-<i class="material-icons" onclick="undocanvas()">undo</i>
+<i class="material-icons" (click)="undoCanvas()">undo</i>
 </label>
     <label class="mdl-button mdl-js-button mdl-button--icon">
-<i class="material-icons" onclick="redocanvas()">redo</i>
+<i class="material-icons" (click)="redoCanvas()">redo</i>
 </label>
 
   </div>

@@ -70,9 +70,17 @@ export class ScoreEditingComponent implements OnInit {
     else {
       this.writeScoreHor(callback);
     }
+  }
 
+  writeScoreVer(callback){
 
   }
+
+  writeScoreHor(callback){
+
+  }
+
+
 
   zipMakerCaller() {
 

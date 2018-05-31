@@ -19,7 +19,6 @@ private context: CanvasRenderingContext2D;
 
 
   ngAfterViewInit(): void {
-    console.log(this.context);
     this.context = (<HTMLCanvasElement>this.canvasRef.nativeElement).getContext("2d");
 
     this.canvasHandle.context = this.context;

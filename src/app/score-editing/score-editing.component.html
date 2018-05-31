@@ -1,17 +1,17 @@
 <div id="texttools">
   <h3>
-    Info import and placing tools
+    {{ title }}
   </h3>
 
   <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
     <div class="mdl-card__supporting-text">
-      <a id="sinfo">
+      <a (click)="hideDataInput=!hideDataInput">
         <h5>
         Pars, names and scores
       </h5>
       </a>
 
-      <div class="hidden toolcard" id="info">
+      <div [hidden]="hideDataInput">
 
         <!--           TOOLTIP -->
         <div class="tooltip">
@@ -25,7 +25,7 @@
           Players
         </p>
         <form>
-          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="playersamount">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="playersAmount" name="playersAmountSelector">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -39,81 +39,82 @@
 
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="coursepars">
+          <input class="mdl-textfield__input" type="text" [(ngModel)]="holePars">
           <label class="mdl-textfield__label" for="coursepars">Hole pars</label>
         </div>
+
 
         <div id="player1">
 
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playername1">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player1Name">
             <label class="mdl-textfield__label" for="sample3">First Player</label>
           </div>
 
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playerscore1">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player1Scores">
             <label class="mdl-textfield__label" for="playerscore1">Scores</label>
           </div>
         </div>
 
-        <div id="player2">
+        <div id="player2" [hidden]="playersAmount<=1">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playername2">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player2Name">
             <label class="mdl-textfield__label" for="sample3">Second Player</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playerscore2">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player2Scores">
             <label class="mdl-textfield__label" for="playerscore2">Scores</label>
           </div>
         </div>
 
-        <div id="player3">
+        <div id="player3" [hidden]="playersAmount<=2">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playername3">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player3Name">
             <label class="mdl-textfield__label" for="sample3">Third Player</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playerscore3">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player3Scores">
             <label class="mdl-textfield__label" for="playerscore3">Scores</label>
           </div>
         </div>
 
-        <div id="player4">
+        <div id="player4" [hidden]="playersAmount<=3">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playername4">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player4Name">
             <label class="mdl-textfield__label" for="sample3">Fourth Player</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playerscore4">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player4Scores">
             <label class="mdl-textfield__label" for="playerscore4">Scores</label>
           </div>
         </div>
 
-        <div id="player5">
+        <div id="player5" [hidden]="playersAmount<=4">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playername5">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player5Name">
             <label class="mdl-textfield__label" for="sample3">Fifth Player</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playerscore5">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player5Scores">
             <label class="mdl-textfield__label" for="playerscore5">Scores</label>
           </div>
         </div>
 
-        <div id="player6">
+        <div id="player6" [hidden]="playersAmount<=5">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playername6">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player6Name">
             <label class="mdl-textfield__label" for="sample3">Sixth player</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="playerscore6">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player6Scores">
             <label class="mdl-textfield__label" for="playerscore6">Scores</label>
           </div>
         </div>
@@ -125,13 +126,13 @@
   </div>
   <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
     <div class="mdl-card__supporting-text">
-      <a id="slayout">
+      <a (click)="hideLayoutEditor=!hideLayoutEditor">
         <h5>
         Text layout
       </h5>
       </a>
 
-      <div class="hidden toolcard" id="layout">
+      <div [hidden]="hideLayoutEditor">
 
         <!--           TOOLTIP -->
         <div class="tooltip">
@@ -143,11 +144,11 @@
         </div>
 
         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Vertical">
-<input type="radio" id="Vertical" class="mdl-radio__button" name="playersplacement" value="ver" checked onchange="scoredirection()">
+<input type="radio" id="Vertical" [(ngModel)]="playersDirections" class="mdl-radio__button" name="playersDirections" value="ver" (change)="scoreDirection()">
 <span class="mdl-radio__label">Vertical</span>
 </label>
         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Horizontal">
-<input type="radio" id="Horizontal" class="mdl-radio__button" name="playersplacement" value="hor" onchange="scoredirection()">
+<input type="radio" id="Horizontal" [(ngModel)]="playersDirections" class="mdl-radio__button" name="playersDirections" value="hor" (change)="scoreDirection()">
 <span class="mdl-radio__label">Horizontal</span>
 </label>
 
@@ -155,12 +156,12 @@
           Position X
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="scoretextposx" type="range" min="0" max="1920" value="200" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="scorePosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="scoreDirection()" (change)="scoreDirection()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextposxtext" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="scorePosX" (keyup)="scoreDirection()" (change)="scoreDirection()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -170,12 +171,12 @@
           Position Y
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="scoretextposy" type="range" min="0" max="1920" value="200" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="scorePosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="scoreDirection()" (change)="scoreDirection()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextposytext" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="scorePosY" (keyup)="scoreDirection()" (change)="scoreDirection()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -185,12 +186,12 @@
           Player to Player
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="scoretextpp" type="range" min="0" max="1920" value="430" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="scorePlayerPlayer" type="range" min="0" max="1920" value="430" tabindex="0" (mousemove)="scoreDirection()" (change)="scoreDirection()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextpptext" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="scorePlayerPlayer" (keyup)="scoreDirection()" (change)="scoreDirection()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -201,12 +202,12 @@
           Name to hole score
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="scoretextnh" type="range" min="-1000" max="1000" value="300" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="scoreNameHole" type="range" min="-1000" max="1000" value="300" tabindex="0" (mousemove)="scoreDirection()" (change)="scoreDirection()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretextnhtext" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="scoreNameHole" (keyup)="scoreDirection()" (change)="scoreDirection()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -216,12 +217,12 @@
           Hole score to total
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" id="scoretextht" type="range" min="-1000" max="1000" value="200" tabindex="0" oninput="scoredirection()" onchange="scoredirection()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="scoreHoleTotal" type="range" min="-1000" max="1000" value="200" tabindex="0" (mousemove)="scoreDirection()" (change)="scoreDirection()">
         </div>
 
         <div class="textboxwidth">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="scoretexthttext" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="scoreHoleTotal" (keyup)="scoreDirection()" (change)="scoreDirection()">
 
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -232,7 +233,7 @@
         </p>
         <div class="textboxwidth samerow">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" id="scoretextnamesize" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="scoreNameSize" (keyup)="scoreDirection()" (change)="scoreDirection()">
             <label class="mdl-textfield__label" for="scoretextnamesize">Size</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -242,7 +243,7 @@
 
 
         <form class="samerow">
-          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="scoretextnamefont" oninput="scoredirection()" onchange="scoredirection()">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="scoreNameFont" (keyup)="scoreDirection()" (change)="scoreDirection()" name="scoreNameFontSelector">
   <option value="Arial">Arial</option>
   <option value="Impact">Impact</option>
   <option value="Courier New">Courier New</option>
@@ -251,7 +252,7 @@
 
         </form>
 
-        <input class="jscolor mdl-textfield__input samerow" id="scoretextnamecolor" oninput="scoredirection()" onchange="scoredirection()" value="F3F3F3">
+        <input class="mdl-textfield__input samerow" [(colorPicker)]="scoreNameColor" [style.background]="scoreNameColor" [value]="scoreNameColor" [cpPosition]="'left'" (colorPickerChange)="scoreDirection()">
 
         <p>
           Hole score font
@@ -265,7 +266,7 @@
 
         <div class="textboxwidth samerow">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" id="scoretextholesize" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="scoreHoleScoreSize" (keyup)="scoreDirection()" (change)="scoreDirection()">
             <label class="mdl-textfield__label" for="scoretextholesize">Size</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -275,7 +276,7 @@
 
 
         <form class="samerow">
-          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="scoretextholefont" oninput="scoredirection()" onchange="scoredirection()">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="scoreHoleScoreFont" (keyup)="scoreDirection()" (change)="scoreDirection()" name="scoreHoleScoreFontSelector">
   <option value="Arial">Arial</option>
   <option value="Impact">Impact</option>
   <option value="Courier New">Courier New</option>
@@ -283,7 +284,7 @@
 </select>
 
         </form>
-        <input class="jscolor mdl-textfield__input samerow" id="scoretextholecolor" oninput="scoredirection()" onchange="scoredirection()" value="F3F3F3">
+        <input class="mdl-textfield__input samerow" [(colorPicker)]="scoreHoleScoreColor" [style.background]="scoreHoleScoreColor" [value]="scoreHoleScoreColor" [cpPosition]="'left'" (colorPickerChange)="scoreDirection()">
 
 
 
@@ -292,7 +293,7 @@
         </p>
         <div class="textboxwidth samerow">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" id="scoretexttotalsize" oninput="scoredirection()" onchange="scoredirection()">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="scoreTotalScoreSize" (keyup)="scoreDirection()" (change)="scoreDirection()">
             <label class="mdl-textfield__label" for="sample4">Size</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
@@ -302,7 +303,7 @@
 
 
         <form class="samerow">
-          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="scoretexttotalfont" oninput="scoredirection()" onchange="scoredirection()">
+          <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="scoreTotalScoreFont" (keyup)="scoreDirection()" (change)="scoreDirection()" name="scoreTotalScoreFontSelector">
   <option value="Arial">Arial</option>
   <option value="Impact">Impact</option>
   <option value="Courier New">Courier New</option>
@@ -311,7 +312,7 @@
 
         </form>
 
-        <input class="jscolor mdl-textfield__input samerow" id="scoretexttotalcolor" oninput="scoredirection()" onchange="scoredirection()" value="F3F3F3">
+        <input class="mdl-textfield__input samerow" [(colorPicker)]="scoreTotalScoreColor" [style.background]="scoreTotalScoreColor" [value]="scoreTotalScoreColor" [cpPosition]="'left'" (colorPickerChange)="scoreDirection()">
 
       </div>
 
@@ -319,13 +320,13 @@
   </div>
   <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
     <div class="mdl-card__supporting-text">
-      <a id="sready">
+      <a (click)="hideStartProcessing=!hideStartProcessing">
         <h5>
         Make scorecards
       </h5>
       </a>
 
-      <div class="hidden toolcard" id="ready">
+      <div [hidden]="hideStartProcessing">
 
         <!--           TOOLTIP -->
         <div class="tooltip">
@@ -335,7 +336,7 @@
             Score graphics are ready? Press Start processing and wait for zip to start downloading.
           </div>
         </div>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="zipmakercaller()">Start processing</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="zipMakerCaller()">Start processing</button>
 
       </div>
 

@@ -11,7 +11,11 @@ export class ScoreEditingComponent implements OnInit {
 
   constructor(private scoreGraphicsComponent: ScoreGraphicsComponent) { }
 
+
+  private ctx: CanvasRenderingContext2D;
+
   ngOnInit() {
+
   }
 
   changeTools(){

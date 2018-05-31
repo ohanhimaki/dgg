@@ -28,7 +28,7 @@ export class BackgroundEditingComponent implements OnInit {
   private savedCanvas = [];
   private redoCanvasa = [];
   private ctx: CanvasRenderingContext2D;
-  private imageToCanvas: Image;
+  private imageToCanvas: HTMLImageElement;
   // Variables for HIDE
   public hideResolution = true;
   public hideRectangle = true;
@@ -153,8 +153,9 @@ export class BackgroundEditingComponent implements OnInit {
 
   addImage(e): void {
     let self = this;
+
     let imagereader = new FileReader();
-    imagereader.onload = (event) =>{
+    imagereader.onload = (event:any) =>{
       let newimg = new Image();
       newimg.onload = ()=> {
 

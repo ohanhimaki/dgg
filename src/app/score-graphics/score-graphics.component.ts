@@ -11,7 +11,7 @@ export class ScoreGraphicsComponent implements OnInit {
 
   constructor(private displayerService: DisplayerService) { }
 
-  private hideBackgroundEditing = false;
+  public hideBackgroundEditing = false;
 
   changeTools(){
     this.hideBackgroundEditing = !this.hideBackgroundEditing;

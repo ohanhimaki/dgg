@@ -141,12 +141,12 @@ export class BackgroundEditingComponent implements OnInit {
 
 
   imagePlacing() {
-    if(this.imageToCanvas){
+    if (this.imageToCanvas) {
 
 
-    this.refreshCanvas();
-    this.ctx.globalAlpha = 1;
-    this.ctx.drawImage(this.imageToCanvas, this.addImagePosX, this.addImagePosY, this.imageToCanvas.width*this.addImageWidth/100, this.imageToCanvas.height*this.addImageHeight/100);
+      this.refreshCanvas();
+      this.ctx.globalAlpha = 1;
+      this.ctx.drawImage(this.imageToCanvas, this.addImagePosX, this.addImagePosY, this.imageToCanvas.width * this.addImageWidth / 100, this.imageToCanvas.height * this.addImageHeight / 100);
     }
 
   }
@@ -155,9 +155,9 @@ export class BackgroundEditingComponent implements OnInit {
     let self = this;
 
     let imagereader = new FileReader();
-    imagereader.onload = (event:any) =>{
+    imagereader.onload = (event: any) => {
       let newimg = new Image();
-      newimg.onload = ()=> {
+      newimg.onload = () => {
 
       }
       newimg.src = event.target.result;
@@ -167,7 +167,7 @@ export class BackgroundEditingComponent implements OnInit {
       }, 300);
 
     }
-imagereader.readAsDataURL(e.target.files[0]);
+    imagereader.readAsDataURL(e.target.files[0]);
 
   }
 

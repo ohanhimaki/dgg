@@ -54,7 +54,7 @@
 
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
-            <input class="mdl-textfield__input" type="text" [(ngModel)]="player1Scores">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player1Scores" (change)="player1ScoresSeparated=inputSeparator(player1Scores)">
             <label class="mdl-textfield__label" for="playerscore1">Scores</label>
           </div>
         </div>
@@ -66,7 +66,7 @@
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" [(ngModel)]="player2Scores">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player2Scores" (change)="player2ScoresSeparated=inputSeparator(player2Scores)">
             <label class="mdl-textfield__label" for="playerscore2">Scores</label>
           </div>
         </div>
@@ -78,7 +78,7 @@
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" [(ngModel)]="player3Scores">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player3Scores" (change)="player3ScoresSeparated=inputSeparator(player3Scores)">
             <label class="mdl-textfield__label" for="playerscore3">Scores</label>
           </div>
         </div>
@@ -90,7 +90,7 @@
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" [(ngModel)]="player4Scores">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player4Scores" (change)="player4ScoresSeparated=inputSeparator(player4Scores)">
             <label class="mdl-textfield__label" for="playerscore4">Scores</label>
           </div>
         </div>
@@ -102,7 +102,7 @@
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" [(ngModel)]="player5Scores">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player5Scores" (change)="player5ScoresSeparated=inputSeparator(player5Scores)">
             <label class="mdl-textfield__label" for="playerscore5">Scores</label>
           </div>
         </div>
@@ -114,7 +114,7 @@
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" [(ngModel)]="player6Scores">
+            <input class="mdl-textfield__input" type="text" [(ngModel)]="player6Scores" (change)="player6ScoresSeparated=inputSeparator(player6Scores)">
             <label class="mdl-textfield__label" for="playerscore6">Scores</label>
           </div>
         </div>

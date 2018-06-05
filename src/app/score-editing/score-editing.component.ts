@@ -45,6 +45,13 @@ export class ScoreEditingComponent implements OnInit {
   @Input('player6Name') player6Name: string;
   @Input('player6Scores') player6Scores: string;
 
+  private player1ScoresSeparated =[];
+  private player2ScoresSeparated =[];
+  private player3ScoresSeparated =[];
+  private player4ScoresSeparated =[];
+  private player5ScoresSeparated =[];
+  private player6ScoresSeparated =[];
+
   @Input('playersDirections') playersDirections: string = "ver";
   @Input('scorePosX') scorePosX: number = 100;
   @Input('scorePosY') scorePosY: number = 100;
@@ -70,6 +77,11 @@ export class ScoreEditingComponent implements OnInit {
     else {
       this.writeScoreHor(callback);
     }
+  }
+
+  inputSeparator(input){
+    let tmpInput = input.split(/[\s,\t]+/);
+    return tmpInput;
   }
 
   writeScoreVer(callback){

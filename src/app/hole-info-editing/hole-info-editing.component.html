@@ -1,0 +1,326 @@
+<div id="texttools">
+  <h3>
+    {{ title }}
+  </h3>
+
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a (click)="hideInfoShowOptions=!hideInfoShowOptions">
+        <h5>
+        Select infos to show
+      </h5>
+      </a>
+
+      <div [hidden]="hideInfoShowOptions">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttinfo" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttinfo">
+            <!--             Tooltiptexthere -->
+            Select correct amount of players and give player names and scores. You can give scores divided with "," or spaces. You can paste scores that are divided with tab ex. Discgolfmetrix.
+          </div>
+        </div>
+
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="holeNumbersCheck">
+          <span class="mdl-switch__label">Show hole numbers</span>
+          <input type="checkbox" id="holeNumbersCheck"  [(ngModel)]="holeNumbersCheck" class="mdl-switch__input" name="holeNumbersCheckSelector">
+
+        </label>
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="holeParsCheck">
+          <span class="mdl-switch__label">Show hole pars</span>
+          <input type="checkbox" id="holeParsCheck"  [(ngModel)]="holeParsCheck" class="mdl-switch__input" name="holeParsCheckSelector">
+
+        </label>
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="holeDistancesCheck">
+          <span class="mdl-switch__label">Show hole distances</span>
+          <input type="checkbox" id="holeDistancesCheck"  [(ngModel)]="holeDistancesCheck" class="mdl-switch__input" name="holeDistancesCheckSelector">
+
+        </label>
+
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a (click)="hideDataInput=!hideDataInput">
+        <h5>
+        Give data
+      </h5>
+      </a>
+
+      <div [hidden]="hideDataInput">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttinfo" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttinfo">
+            <!--             Tooltiptexthere -->
+            Select correct amount of players and give player names and scores. You can give scores divided with "," or spaces. You can paste scores that are divided with tab ex. Discgolfmetrix.
+          </div>
+        </div>
+        <p>
+          Infos to show
+        </p>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [hidden]="!holeNumbersCheck">
+          <input class="mdl-textfield__input" type="text" [(ngModel)]="holeNumbers" (change)="holeNumbersSeparated=inputSeparator(holeNumbers)">
+          <label class="mdl-textfield__label" for="coursepars">Hole numbers</label>
+        </div>
+
+
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [hidden]="!holeParsCheck">
+          <input class="mdl-textfield__input" type="text" [(ngModel)]="holePars" (change)="holeParsSeparated=inputSeparator(holePars)">
+          <label class="mdl-textfield__label" for="coursepars">Hole pars</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [hidden]="!holeDistancesCheck">
+          <input class="mdl-textfield__input" type="text" [(ngModel)]="holeDistances" (change)="holeDistancesSeparated=inputSeparator(holeDistances)">
+          <label class="mdl-textfield__label" for="coursepars">Hole distances</label>
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+    <div class="mdl-card__supporting-text">
+      <a (click)="hideLayoutEditor=!hideLayoutEditor">
+        <h5>
+        Text layout
+      </h5>
+      </a>
+
+      <div [hidden]="hideLayoutEditor">
+
+        <!--           TOOLTIP -->
+        <div class="tooltip">
+          <div id="ttlayout" class="icon material-icons">help</div>
+          <div class="mdl-tooltip mdl-tooltip--large" for="ttlayout">
+            <!--             Tooltiptexthere -->
+            Select Vertical or Horizontal layout. You are positioning topleft corner. You can disable score depending colors.
+          </div>
+        </div>
+
+        <div [hidden]="!holeNumbersCheck">
+          <p>
+            Hole number position X
+          </p>
+          <div class="sliderwidth">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeNumbersPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+          </div>
+
+          <div class="textboxwidth">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeNumbersPosX" (keyup)="writeScores()" (change)="writeScores()">
+
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+          <!--         to here -->
+          <p>
+            Hole number position Y
+          </p>
+          <div class="sliderwidth">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeNumbersPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+          </div>
+
+          <div class="textboxwidth">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeNumbersPosY" (keyup)="writeScores()" (change)="writeScores()">
+
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+        </div>
+
+        <div [hidden]="!holeParsCheck">
+          <p>
+            Hole pars position X
+          </p>
+          <div class="sliderwidth">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeParsPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+          </div>
+
+          <div class="textboxwidth">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeParsPosX" (keyup)="writeScores()" (change)="writeScores()">
+
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+          <!--         to here -->
+          <p>
+            Hole pars position Y
+          </p>
+          <div class="sliderwidth">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeParsPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+          </div>
+
+          <div class="textboxwidth">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeParsPosY" (keyup)="writeScores()" (change)="writeScores()">
+
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+        </div>
+
+        <div [hidden]="!holeDistancesCheck">
+          <p>
+            Hole distances position X
+          </p>
+          <div class="sliderwidth">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeDistancesPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+          </div>
+
+          <div class="textboxwidth">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeDistancesPosX" (keyup)="writeScores()" (change)="writeScores()">
+
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+          <!--         to here -->
+          <p>
+            Hole distances position Y
+          </p>
+          <div class="sliderwidth">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeDistancesPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+          </div>
+
+          <div class="textboxwidth">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeDistancesPosY" (keyup)="writeScores()" (change)="writeScores()">
+
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div [hidden]="!holeNumbersCheck">
+          <p>
+            Hole number font
+          </p>
+          <div class="textboxwidth samerow">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeNumbersSize" (keyup)="writeScores()" (change)="writeScores()">
+              <label class="mdl-textfield__label" for="scoretextnamesize">Size</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+
+
+
+
+          <form class="samerow">
+            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeNumbersFont" (keyup)="writeScores()" (change)="writeScores()" name="holeNumbersFontSelector">
+  <option value="Arial">Arial</option>
+  <option value="Impact">Impact</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Verdana">Verdana</option>
+</select>
+
+          </form>
+
+          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeNumbersColor" [style.background]="holeNumbersColor" [value]="holeNumbersColor" [cpPosition]="'left'" (colorPickerChange)="writeScores()">
+        </div>
+        <div [hidden]="!holeParsCheck">
+          <p>
+            Hole pars font
+          </p>
+
+          <div class="textboxwidth samerow">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeParsSize" (keyup)="writeScores()" (change)="writeScores()">
+              <label class="mdl-textfield__label" for="scoretextholesize">Size</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+
+
+
+
+          <form class="samerow">
+            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeParsFont" (keyup)="writeScores()" (change)="writeScores()" name="scoreHoleScoreFontSelector">
+  <option value="Arial">Arial</option>
+  <option value="Impact">Impact</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Verdana">Verdana</option>
+</select>
+
+          </form>
+          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeParsColor" [style.background]="holeParsColor" [value]="holeParsColor" [cpPosition]="'left'" (colorPickerChange)="writeScores()">
+
+        </div>
+
+        <div [hidden]="!holeDistancesCheck">
+
+          <p>
+            Round total font
+          </p>
+          <div class="textboxwidth samerow">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeDistancesSize" (keyup)="writeScores()" (change)="writeScores()">
+              <label class="mdl-textfield__label" for="sample4">Size</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+
+
+
+
+          <form class="samerow">
+            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeDistancesFont" (keyup)="writeScores()" (change)="writeScores()" name="scoreTotalScoreFontSelector">
+  <option value="Arial">Arial</option>
+  <option value="Impact">Impact</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Verdana">Verdana</option>
+</select>
+
+          </form>
+
+          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeDistancesColor" [style.background]="holeDistancesColor" [value]="holeDistancesColor" [cpPosition]="'left'" (colorPickerChange)="writeScores()">
+        </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="section--center gm-card mdl-card mdl-grid mdl-grid--no-spacing mdl-shadow--2dp tyokalukortti">
+      <div class="mdl-card__supporting-text">
+        <a (click)="hideStartProcessing=!hideStartProcessing">
+          <h5>
+        Make scorecards
+      </h5>
+        </a>
+
+        <div [hidden]="hideStartProcessing">
+
+          <!--           TOOLTIP -->
+          <div class="tooltip">
+            <div id="ttready" class="icon material-icons">help</div>
+            <div class="mdl-tooltip mdl-tooltip--large" for="ttready">
+              <!--             Tooltiptexthere -->
+              Score graphics are ready? Press Start processing and wait for zip to start downloading.
+            </div>
+          </div>
+          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="zipMakerCaller()">Start processing</button>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>

@@ -13,6 +13,8 @@ import { ScoreGraphicsComponent } from './score-graphics/score-graphics.componen
 import { CanvasComponent } from './canvas/canvas.component';
 import { BackgroundEditingComponent } from './background-editing/background-editing.component';
 import { ScoreEditingComponent } from './score-editing/score-editing.component';
+import { HoleInfoGraphicsComponent } from './hole-info-graphics/hole-info-graphics.component';
+import { HoleInfoEditingComponent } from './hole-info-editing/hole-info-editing.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { ScoreEditingComponent } from './score-editing/score-editing.component';
     CanvasComponent,
     BackgroundEditingComponent,
     ScoreEditingComponent,
+    HoleInfoGraphicsComponent,
+    HoleInfoEditingComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 
 import { CanvasComponent } from '../canvas/canvas.component';
 import { DisplayerService } from '../displayer.service';
-import { ScoreGraphicsComponent } from '../score-graphics/score-graphics.component';
 import { CanvasHandleService } from '../canvas-handle.service'
 
 
@@ -20,7 +19,7 @@ import { CanvasHandleService } from '../canvas-handle.service'
 
 export class BackgroundEditingComponent implements OnInit {
 
-  constructor(public scoreGraphicsComponent: ScoreGraphicsComponent, private canvasHandle: CanvasHandleService) { }
+  constructor(private canvasHandle: CanvasHandleService) { }
 
   // title
   title = 'Background editing tools';
@@ -46,9 +45,7 @@ export class BackgroundEditingComponent implements OnInit {
   }
 
 
-  changeTools() {
-    this.scoreGraphicsComponent.changeTools();
-  }
+
 
   // INPUT
   @Input('rectanglePosistionX') rectanglePosistionX: number = 0;

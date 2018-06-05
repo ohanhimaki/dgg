@@ -67,7 +67,7 @@
           Position X
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionX" type="range" min="0" max="{{canvasResolutionWidth}}" value="960" tabindex="0" (mousemove)="drawRect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionX" type="range" min="0" max="{{canvasResolutionWidth- rectangleWidth}}" value="960" tabindex="0" (mousemove)="drawRect()">
         </div>
 
         <div class="textboxwidth">
@@ -82,7 +82,7 @@
           Position Y
         </p>
         <div class="sliderwidth">
-          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionY" type="range" min="0" max="1080" value="540" tabindex="0" (mousemove)="drawRect()">
+          <input class="mdl-slider mdl-js-slider" [(ngModel)]="rectanglePosistionY" type="range" min="0" max="{{canvasResolutionHeight- rectangleHeight }}" value="540" tabindex="0" (mousemove)="drawRect()">
         </div>
 
         <div class="textboxwidth">

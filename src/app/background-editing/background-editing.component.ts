@@ -81,6 +81,7 @@ export class BackgroundEditingComponent implements OnInit {
     this.ctx = this.canvasHandle.givectx();
     this.redoCanvasa = [];
     let tmpvar = this.ctx.getImageData(0, 0, this.canvasResolutionWidth, this.canvasResolutionHeight);
+    this.canvasHandle.lastSavedCanvas=tmpvar;
     this.savedCanvas.push(tmpvar);
   }
 

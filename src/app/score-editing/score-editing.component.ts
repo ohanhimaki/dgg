@@ -4,7 +4,7 @@ import * as JSZip from 'jszip';
 import {saveAs} from 'file-saver';
 
 import { ScoreGraphicsComponent } from '../score-graphics/score-graphics.component';
-import { CanvasHandleService } from '../canvas-handle.service'
+import { CanvasHandleService } from '../canvas-handle.service';
 
 @Component({
   selector: 'app-score-editing',
@@ -24,15 +24,7 @@ export class ScoreEditingComponent implements OnInit {
   public hideLayoutEditor = true;
   public hideStartProcessing = true;
 
-  ngOnInit() {
-
-  }
-
-  changeTools() {
-    this.scoreGraphicsComponent.changeTools();
-  }
-
-  @Input('playersAmount') playersAmount: number = 4;
+  @Input('playersAmount') playersAmount = 4;
   @Input('holePars') holePars: string;
   @Input('player1Name') player1Name: string;
   @Input('player1Scores') player1Scores: string;
@@ -63,24 +55,26 @@ export class ScoreEditingComponent implements OnInit {
   private player5ScoresTotalsAfterHole = [];
   private player6ScoresTotalsAfterHole = [];
 
-  @Input('playersDirections') playersDirections: string = "ver";
-  @Input('scorePosX') scorePosX: number = 100;
-  @Input('scorePosY') scorePosY: number = 100;
-  @Input('scorePlayerPlayer') scorePlayerPlayer: number = 100;
-  @Input('scoreNameHole') scoreNameHole: number = 100;
-  @Input('scoreHoleTotal') scoreHoleTotal: number = 100;
-  @Input('scoreNameSize') scoreNameSize: number = 100;
-  @Input('scoreNameFont') scoreNameFont: string = "Arial";
-  @Input('scoreNameColor') scoreNameColor: string = "#ffffff";
-  @Input('scoreHoleScoreSize') scoreHoleScoreSize: number = 100;
-  @Input('scoreHoleScoreFont') scoreHoleScoreFont: string = "Arial";
-  @Input('scoreHoleScoreColor') scoreHoleScoreColor: string = "#ffffff";
-  @Input('scoreTotalScoreSize') scoreTotalScoreSize: number = 100;
-  @Input('scoreTotalScoreFont') scoreTotalScoreFont: string = "Arial";
-  @Input('scoreTotalScoreColor') scoreTotalScoreColor: string = "#ffffff";
-  @Input('holeScoreColorBasedOnScoreSelector') holeScoreColorBasedOnScoreSelector: boolean = true;
+  @Input('playersDirections') playersDirections = 'ver';
+  @Input('scorePosX') scorePosX = 100;
+  @Input('scorePosY') scorePosY = 100;
+  @Input('scorePlayerPlayer') scorePlayerPlayer = 100;
+  @Input('scoreNameHole') scoreNameHole = 100;
+  @Input('scoreHoleTotal') scoreHoleTotal = 100;
+  @Input('scoreNameSize') scoreNameSize = 100;
+  @Input('scoreNameFont') scoreNameFont = 'Arial';
+  @Input('scoreNameColor') scoreNameColor = '#ffffff';
+  @Input('scoreHoleScoreSize') scoreHoleScoreSize = 100;
+  @Input('scoreHoleScoreFont') scoreHoleScoreFont = 'Arial';
+  @Input('scoreHoleScoreColor') scoreHoleScoreColor = '#ffffff';
+  @Input('scoreTotalScoreSize') scoreTotalScoreSize = 100;
+  @Input('scoreTotalScoreFont') scoreTotalScoreFont = 'Arial';
+  @Input('scoreTotalScoreColor') scoreTotalScoreColor = '#ffffff';
+  @Input('holeScoreColorBasedOnScoreSelector') holeScoreColorBasedOnScoreSelector = true;
 
+  ngOnInit() {
 
+  }
 
 
   writeScores(callback) {
@@ -93,17 +87,16 @@ export class ScoreEditingComponent implements OnInit {
     let scorePosFixY;
 
     this.ctx.globalAlpha = 1;
-    this.ctx.font = this.scoreNameSize + "px " + this.scoreNameFont;
+    this.ctx.font = this.scoreNameSize + 'px ' + this.scoreNameFont;
     this.ctx.fillStyle = this.scoreNameColor;
-    this.ctx.textBaseline = "middle";
+    this.ctx.textBaseline = 'middle';
 
-    if (this.playersDirections == "ver") {
-      this.ctx.textAlign = "left";
+    if (this.playersDirections === 'ver') {
+      this.ctx.textAlign = 'left';
       scoreYOffset = this.scorePlayerPlayer / this.playersAmount - 1;
       scoreXOffset = 0;
-    }
-    else {
-      this.ctx.textAlign = "center";
+    } else {
+      this.ctx.textAlign = 'center';
       scoreYOffset = 0;
       scoreXOffset = this.scorePlayerPlayer / this.playersAmount - 1;
     }
@@ -128,20 +121,19 @@ export class ScoreEditingComponent implements OnInit {
     }
 
     // hole scores
-    this.ctx.textAlign = "center";
-    this.ctx.textBaseline = "middle";
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'middle';
 
-    this.ctx.font = this.scoreHoleScoreSize + "px " + this.scoreHoleScoreFont;
+    this.ctx.font = this.scoreHoleScoreSize + 'px ' + this.scoreHoleScoreFont;
     this.ctx.fillStyle = this.scoreHoleScoreColor;
 
-    if (this.playersDirections == "ver") {
+    if (this.playersDirections === 'ver') {
 
       scorePosFixX = this.scorePosX + this.scoreNameHole;
       scorePosFixY = this.scorePosY;
       scoreXOffset = 0;
       scoreYOffset = this.scorePlayerPlayer / this.playersAmount - 1;
-    }
-    else {
+    }  else {
       scorePosFixX = this.scorePosX;
       scorePosFixY = this.scorePosY + this.scoreNameHole;
       scoreXOffset = this.scorePlayerPlayer / this.playersAmount - 1;
@@ -191,22 +183,21 @@ export class ScoreEditingComponent implements OnInit {
       this.ctx.fillText(this.player6ScoresSeparated[this.hole], scorePosFixX + scoreXOffset * 5, scorePosFixY + scoreYOffset * 5);
     }
 
-    //TOTAL Scores
+    // TOTAL Scores
 
-    this.ctx.textAlign = "center";
-    this.ctx.textBaseline = "middle";
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'middle';
 
-    this.ctx.font = this.scoreTotalScoreSize + "px " + this.scoreTotalScoreFont;
+    this.ctx.font = this.scoreTotalScoreSize + 'px ' + this.scoreTotalScoreFont;
     this.ctx.fillStyle = this.scoreTotalScoreColor;
 
-    if (this.playersDirections == "ver") {
+    if (this.playersDirections === 'ver') {
 
       scorePosFixX = this.scorePosX + this.scoreNameHole + this.scoreHoleTotal;
       scorePosFixY = this.scorePosY;
       scoreXOffset = 0;
       scoreYOffset = this.scorePlayerPlayer / this.playersAmount - 1;
-    }
-    else {
+    } else {
       scorePosFixX = this.scorePosX;
       scorePosFixY = this.scorePosY + this.scoreNameHole + this.scoreHoleTotal;
       scoreXOffset = this.scorePlayerPlayer / this.playersAmount - 1;
@@ -231,31 +222,33 @@ export class ScoreEditingComponent implements OnInit {
       this.ctx.fillText(this.player6ScoresTotalsAfterHole[this.hole], scorePosFixX + scoreXOffset * 5, scorePosFixY + scoreYOffset * 5);
     }
 
+    // tslint:disable-next-line:no-unused-expression
     callback && callback();
 
   }
 
   inputSeparator(input) {
-    let tmpInput = input.split(/[\s,\t]+/);
+    const tmpInput = input.split(/[\s,\t]+/);
     return tmpInput;
   }
 
   totalScorePreparer(tmptotalScoreInput) {
     let tmptotalscore = 0;
-    let tmptotal = [];
+    const tmptotal = [];
     let tmppush = 0;
-    let tmptotalscorepush = "";
+    let tmptotalscorepush = '';
 
 
-    for (let i in tmptotalScoreInput){
+    // tslint:disable-next-line:forin
+    for (const i in tmptotalScoreInput) {
 
       tmppush = tmptotalScoreInput[i] - this.holeParsSeparated[i];
       tmptotalscore += tmppush;
 
-      if(tmptotalscore > 0){
-        tmptotalscorepush = "+" + tmptotalscore;
-      } else if (tmptotalscore === 0){
-        tmptotalscorepush = "par";
+      if (tmptotalscore > 0) {
+        tmptotalscorepush = '+' + tmptotalscore;
+      } else if (tmptotalscore === 0) {
+        tmptotalscorepush = 'par';
       } else {
         tmptotalscorepush = tmptotalscore.toString();
       }
@@ -269,9 +262,9 @@ export class ScoreEditingComponent implements OnInit {
 
   holeScoreColorBasedOnScore(score) {
     if (score < this.holeParsSeparated[this.hole]) {
-      this.ctx.fillStyle = "#06CF0B";
+      this.ctx.fillStyle = '#06CF0B';
     } else if (score > this.holeParsSeparated[this.hole]) {
-      this.ctx.fillStyle = "#EB2A2A";
+      this.ctx.fillStyle = '#EB2A2A';
     } else if (score === this.holeParsSeparated[this.hole]) {
       this.ctx.fillStyle = this.scoreHoleScoreColor;
     }
@@ -285,29 +278,28 @@ export class ScoreEditingComponent implements OnInit {
 
 
   zipMakerCaller() {
-    let m = this.holeParsSeparated.length;
-    if (this.hole < m){
-      this.writeScores(()=>{
+    const m = this.holeParsSeparated.length;
+    if (this.hole < m) {
+      this.writeScores(() => {
         this.hole++;
         this.zipMaker();
 
       });
-    }
-     else {
-      setTimeout(()=>{
+    } else {
+      setTimeout(() => {
         this.saveZip();
-        this.hole=0;
-      }, 1000)
+        this.hole = 0;
+      }, 1000);
 
     }
 
   }
 
-  zipMaker(){
-    if (this.hole > 0){
-      this.ctx.canvas.toBlob((blob)=>{
-        this.zip.file("scoregraphics" + this.hole + ".png", blob)
-        setTimeout(()=>{
+  zipMaker() {
+    if (this.hole > 0) {
+      this.ctx.canvas.toBlob((blob) => {
+        this.zip.file('scoregraphics' + this.hole + '.png', blob);
+        setTimeout(() => {
           this.zipMakerCaller();
 
         }, 500);
@@ -315,12 +307,12 @@ export class ScoreEditingComponent implements OnInit {
     }
   }
 
-  saveZip(){
+  saveZip() {
     this.zip.generateAsync({
-      type: "blob"
+      type: 'blob'
     })
-    .then((content)=>{
-      saveAs(content, "Scoregraphics.zip");
+    .then((content) => {
+      saveAs(content, 'Scoregraphics.zip');
     });
 
   }

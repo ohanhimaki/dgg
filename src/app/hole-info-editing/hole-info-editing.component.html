@@ -117,12 +117,12 @@
             Hole number position X
           </p>
           <div class="sliderwidth">
-            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeNumbersPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeNumbersPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeHoleInfos()" (change)="writeHoleInfos()">
           </div>
 
           <div class="textboxwidth">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeNumbersPosX" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeNumbersPosX" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
 
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -132,12 +132,12 @@
             Hole number position Y
           </p>
           <div class="sliderwidth">
-            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeNumbersPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeNumbersPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeHoleInfos()" (change)="writeHoleInfos()">
           </div>
 
           <div class="textboxwidth">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeNumbersPosY" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeNumbersPosY" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
 
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -149,12 +149,12 @@
             Hole pars position X
           </p>
           <div class="sliderwidth">
-            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeParsPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeParsPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeHoleInfos()" (change)="writeHoleInfos()">
           </div>
 
           <div class="textboxwidth">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeParsPosX" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeParsPosX" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
 
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -164,12 +164,12 @@
             Hole pars position Y
           </p>
           <div class="sliderwidth">
-            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeParsPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeParsPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeHoleInfos()" (change)="writeHoleInfos()">
           </div>
 
           <div class="textboxwidth">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeParsPosY" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeParsPosY" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
 
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -181,12 +181,12 @@
             Hole distances position X
           </p>
           <div class="sliderwidth">
-            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeDistancesPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeDistancesPosX" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeHoleInfos()" (change)="writeHoleInfos()">
           </div>
 
           <div class="textboxwidth">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeDistancesPosX" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeDistancesPosX" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
 
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -196,12 +196,12 @@
             Hole distances position Y
           </p>
           <div class="sliderwidth">
-            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeDistancesPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeScores()" (change)="writeScores()">
+            <input class="mdl-slider mdl-js-slider" [(ngModel)]="holeDistancesPosY" type="range" min="0" max="1920" value="200" tabindex="0" (mousemove)="writeHoleInfos()" (change)="writeHoleInfos()">
           </div>
 
           <div class="textboxwidth">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeDistancesPosY" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" [(ngModel)]="holeDistancesPosY" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
 
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -216,7 +216,7 @@
           </p>
           <div class="textboxwidth samerow">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeNumbersSize" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeNumbersSize" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
               <label class="mdl-textfield__label" for="scoretextnamesize">Size</label>
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -226,7 +226,7 @@
 
 
           <form class="samerow">
-            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeNumbersFont" (keyup)="writeScores()" (change)="writeScores()" name="holeNumbersFontSelector">
+            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeNumbersFont" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()" name="holeNumbersFontSelector">
   <option value="Arial">Arial</option>
   <option value="Impact">Impact</option>
   <option value="Courier New">Courier New</option>
@@ -235,7 +235,7 @@
 
           </form>
 
-          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeNumbersColor" [style.background]="holeNumbersColor" [value]="holeNumbersColor" [cpPosition]="'left'" (colorPickerChange)="writeScores()">
+          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeNumbersColor" [style.background]="holeNumbersColor" [value]="holeNumbersColor" [cpPosition]="'left'" (colorPickerChange)="writeHoleInfos()">
         </div>
         <div [hidden]="!holeParsCheck">
           <p>
@@ -244,7 +244,7 @@
 
           <div class="textboxwidth samerow">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeParsSize" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeParsSize" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
               <label class="mdl-textfield__label" for="scoretextholesize">Size</label>
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -254,7 +254,7 @@
 
 
           <form class="samerow">
-            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeParsFont" (keyup)="writeScores()" (change)="writeScores()" name="scoreHoleScoreFontSelector">
+            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeParsFont" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()" name="scoreHoleScoreFontSelector">
   <option value="Arial">Arial</option>
   <option value="Impact">Impact</option>
   <option value="Courier New">Courier New</option>
@@ -262,7 +262,7 @@
 </select>
 
           </form>
-          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeParsColor" [style.background]="holeParsColor" [value]="holeParsColor" [cpPosition]="'left'" (colorPickerChange)="writeScores()">
+          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeParsColor" [style.background]="holeParsColor" [value]="holeParsColor" [cpPosition]="'left'" (colorPickerChange)="writeHoleInfos()">
 
         </div>
 
@@ -273,7 +273,7 @@
           </p>
           <div class="textboxwidth samerow">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeDistancesSize" (keyup)="writeScores()" (change)="writeScores()">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="100" [(ngModel)]="holeDistancesSize" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()">
               <label class="mdl-textfield__label" for="sample4">Size</label>
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
@@ -283,7 +283,7 @@
 
 
           <form class="samerow">
-            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeDistancesFont" (keyup)="writeScores()" (change)="writeScores()" name="scoreTotalScoreFontSelector">
+            <select class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [(ngModel)]="holeDistancesFont" (keyup)="writeHoleInfos()" (change)="writeHoleInfos()" name="scoreTotalScoreFontSelector">
   <option value="Arial">Arial</option>
   <option value="Impact">Impact</option>
   <option value="Courier New">Courier New</option>
@@ -292,7 +292,7 @@
 
           </form>
 
-          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeDistancesColor" [style.background]="holeDistancesColor" [value]="holeDistancesColor" [cpPosition]="'left'" (colorPickerChange)="writeScores()">
+          <input class="mdl-textfield__input samerow" [(colorPicker)]="holeDistancesColor" [style.background]="holeDistancesColor" [value]="holeDistancesColor" [cpPosition]="'left'" (colorPickerChange)="writeHoleInfos()">
         </div>
         </div>
 

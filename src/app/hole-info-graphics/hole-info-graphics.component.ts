@@ -13,7 +13,7 @@ export class HoleInfoGraphicsComponent implements OnInit {
 
   public hideBackgroundEditing = false;
 
-  changeTools(){
+  changeTools() {
     this.hideBackgroundEditing = !this.hideBackgroundEditing;
   }
 

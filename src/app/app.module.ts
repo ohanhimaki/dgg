@@ -15,6 +15,7 @@ import { ScoreEditingComponent } from './score-editing/score-editing.component';
 import { HoleInfoGraphicsComponent } from './hole-info-graphics/hole-info-graphics.component';
 import { HoleInfoEditingComponent } from './hole-info-editing/hole-info-editing.component';
 import { BugformComponent } from './bugform/bugform.component';
+import { ToolExamplesComponent } from './tool-examples/tool-examples.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { BugformComponent } from './bugform/bugform.component';
     HoleInfoGraphicsComponent,
     HoleInfoEditingComponent,
     BugformComponent,
+    ToolExamplesComponent,
   ],
   imports: [
     BrowserModule,

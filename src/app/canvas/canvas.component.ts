@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 
-import {CanvasHandleService} from '../canvas-handle.service'
+import {CanvasHandleService} from '../canvas-handle.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ private context: CanvasRenderingContext2D;
 
 
   ngAfterViewInit(): void {
-    this.context = (<HTMLCanvasElement>this.canvasRef.nativeElement).getContext("2d");
+    this.context = (<HTMLCanvasElement>this.canvasRef.nativeElement).getContext('2d');
 
     this.canvasHandle.context = this.context;
 

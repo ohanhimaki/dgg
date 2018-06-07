@@ -30,7 +30,7 @@ export class HoleInfoEditingComponent implements OnInit {
 
   @Input('holePars') holePars: string;
   @Input('holeNumbers') holeNumbers: string;
-  @Input('holeDistance') holeDistance: string;
+  @Input('holeDistances') holeDistances: string;
 
   @Input('holeNumbersPosX') holeNumbersPosX = 100;
   @Input('holeNumbersPosY') holeNumbersPosY = 100;
@@ -51,14 +51,14 @@ export class HoleInfoEditingComponent implements OnInit {
   @Input('holeDistancesFont') holeDistancesFont = 'Arial';
   @Input('holeDistancesColor') holeDistancesColor = '#ffffff';
 
-  private holeParsSeparated = [];
-  private holeNumbersSeparated = [];
-  private holeDistancesSeparated = [];
+  public holeParsSeparated = [];
+  public holeNumbersSeparated = [];
+  public holeDistancesSeparated = [];
 
   ngOnInit() {
   }
 
-  writeHoleInfos(callback) {
+  writeHoleInfos(callback?) {
 
     this.canvasHandle.refreshCanvas();
     this.ctx = this.canvasHandle.context;
@@ -70,7 +70,6 @@ export class HoleInfoEditingComponent implements OnInit {
     if (this.holeNumbersCheck) {
       if (!this.holeNumbersSeparated[this.hole]) {
         this.holeNumbersSeparated.push(this.hole + 1);
-        console.log(this.holeNumbersSeparated[this.hole]);
       }
     this.ctx.font = this.holeNumbersSize + 'px ' + this.holeNumbersFont;
     this.ctx.fillStyle = this.holeNumbersColor;
@@ -79,7 +78,6 @@ export class HoleInfoEditingComponent implements OnInit {
   if (this.holeParsCheck) {
     if (!this.holeParsSeparated[this.hole]) {
       this.holeParsSeparated.push(3);
-      console.log(this.holeParsSeparated[this.hole]);
     }
 
     this.ctx.font = this.holeParsSize + 'px ' + this.holeParsFont;
@@ -89,7 +87,6 @@ export class HoleInfoEditingComponent implements OnInit {
   if (this.holeDistancesCheck) {
     if (!this.holeDistancesSeparated[this.hole]) {
       this.holeDistancesSeparated.push(' ');
-      console.log(this.holeDistancesSeparated[this.hole]);
     }
     this.ctx.font = this.holeDistancesSize + 'px ' + this.holeDistancesFont;
     this.ctx.fillStyle = this.holeDistancesColor;

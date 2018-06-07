@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { CanvasComponent } from '../canvas/canvas.component';
 import { DisplayerService } from '../displayer.service';
-import { CanvasHandleService } from '../canvas-handle.service'
+import { CanvasHandleService } from '../canvas-handle.service';
 
 
 @Component({
@@ -34,6 +34,28 @@ export class BackgroundEditingComponent implements OnInit {
   public hideAddText = true;
   public hideImageAdd = true;
 
+  @Input('rectanglePosistionX') rectanglePosistionX = 0;
+  @Input('rectanglePosistionY') rectanglePosistionY = 0;
+  @Input('rectangleWidth') rectangleWidth = 100;
+  @Input('rectangleHeight') rectangleHeight = 100;
+  @Input('rectangleColor') rectangleColor = '#000000';
+  @Input('rectangleAlpha') rectangleAlpha = 80;
+  @Input('canvasResolutionWidth') canvasResolutionWidth = 1920;
+  @Input('canvasResolutionHeight') canvasResolutionHeight = 1080;
+
+  @Input('addTextText') addTextText = '';
+  @Input('addTextPosX') addTextPosX = 100;
+  @Input('addTextPosY') addTextPosY = 100;
+  @Input('addTextSize') addTextSize = 100;
+  @Input('addTextFont') addTextFont = 'Arial';
+  @Input('addTextColor') addTextColor = '#FFFFFF';
+  @Input('addTextAlpha') addTextAlpha = 100;
+
+  @Input('addImagePosX') addImagePosX = 100;
+  @Input('addImagePosY') addImagePosY = 100;
+  @Input('addImageWidth') addImageWidth = 100;
+  @Input('addImageHeight') addImageHeight = 100;
+
 
   ngOnInit() {
 
@@ -48,27 +70,7 @@ export class BackgroundEditingComponent implements OnInit {
 
 
   // INPUT
-  @Input('rectanglePosistionX') rectanglePosistionX: number = 0;
-  @Input('rectanglePosistionY') rectanglePosistionY: number = 0;
-  @Input('rectangleWidth') rectangleWidth: number = 100;
-  @Input('rectangleHeight') rectangleHeight: number = 100;
-  @Input('rectangleColor') rectangleColor: string = "#000000";
-  @Input('rectangleAlpha') rectangleAlpha: number = 80;
-  @Input('canvasResolutionWidth') canvasResolutionWidth: number = 1920;
-  @Input('canvasResolutionHeight') canvasResolutionHeight: number = 1080;
 
-  @Input('addTextText') addTextText: string = "";
-  @Input('addTextPosX') addTextPosX: number = 100;
-  @Input('addTextPosY') addTextPosY: number = 100;
-  @Input('addTextSize') addTextSize: number = 100;
-  @Input('addTextFont') addTextFont: string = "Arial";
-  @Input('addTextColor') addTextColor: string = "#FFFFFF";
-  @Input('addTextAlpha') addTextAlpha: number = 100;
-
-  @Input('addImagePosX') addImagePosX: number = 100;
-  @Input('addImagePosY') addImagePosY: number = 100;
-  @Input('addImageWidth') addImageWidth: number = 100;
-  @Input('addImageHeight') addImageHeight: number = 100;
 
   // private rectangleColor: string = "#127bdc";
 
@@ -77,8 +79,8 @@ export class BackgroundEditingComponent implements OnInit {
   saveCanvas() {
     this.ctx = this.canvasHandle.givectx();
     this.redoCanvasa = [];
-    let tmpvar = this.ctx.getImageData(0, 0, this.canvasResolutionWidth, this.canvasResolutionHeight);
-    this.canvasHandle.lastSavedCanvas=tmpvar;
+    const tmpvar = this.ctx.getImageData(0, 0, this.canvasResolutionWidth, this.canvasResolutionHeight);
+    this.canvasHandle.lastSavedCanvas = tmpvar;
     this.savedCanvas.push(tmpvar);
   }
 
@@ -122,10 +124,10 @@ export class BackgroundEditingComponent implements OnInit {
   addText() {
     this.refreshCanvas();
     this.ctx.globalAlpha = this.addTextAlpha / 100;
-    this.ctx.font = this.addTextSize + "px " + this.addTextFont;
+    this.ctx.font = this.addTextSize + 'px ' + this.addTextFont;
     this.ctx.fillStyle = this.addTextColor;
-    this.ctx.textAlign = "center";
-    this.ctx.textBaseline = "middle";
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'middle';
     this.ctx.fillText(this.addTextText, this.addTextPosX, this.addTextPosY);
 
   }
@@ -144,27 +146,28 @@ export class BackgroundEditingComponent implements OnInit {
 
       this.refreshCanvas();
       this.ctx.globalAlpha = 1;
-      this.ctx.drawImage(this.imageToCanvas, this.addImagePosX, this.addImagePosY, this.imageToCanvas.width * this.addImageWidth / 100, this.imageToCanvas.height * this.addImageHeight / 100);
+      this.ctx.drawImage(this.imageToCanvas, this.addImagePosX, this.addImagePosY,
+        this.imageToCanvas.width * this.addImageWidth / 100, this.imageToCanvas.height * this.addImageHeight / 100);
     }
 
   }
 
   addImage(e): void {
-    let self = this;
+    const self = this;
 
-    let imagereader = new FileReader();
+    const imagereader = new FileReader();
     imagereader.onload = (event: any) => {
-      let newimg = new Image();
+      const newimg = new Image();
       newimg.onload = () => {
 
-      }
+      };
       newimg.src = event.target.result;
       self.imageToCanvas = newimg;
       setTimeout(() => {
         self.imagePlacing();
       }, 300);
 
-    }
+    };
     imagereader.readAsDataURL(e.target.files[0]);
 
   }

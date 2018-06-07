@@ -40,20 +40,20 @@ export class ScoreEditingComponent implements OnInit {
   @Input('player6Scores') player6Scores: string;
 
 
-  private holeParsSeparated = [];
-  private player1ScoresSeparated = [];
-  private player2ScoresSeparated = [];
-  private player3ScoresSeparated = [];
-  private player4ScoresSeparated = [];
-  private player5ScoresSeparated = [];
-  private player6ScoresSeparated = [];
+  public holeParsSeparated = [];
+  public player1ScoresSeparated = [];
+  public player2ScoresSeparated = [];
+  public player3ScoresSeparated = [];
+  public player4ScoresSeparated = [];
+  public player5ScoresSeparated = [];
+  public player6ScoresSeparated = [];
 
-  private player1ScoresTotalsAfterHole = [];
-  private player2ScoresTotalsAfterHole = [];
-  private player3ScoresTotalsAfterHole = [];
-  private player4ScoresTotalsAfterHole = [];
-  private player5ScoresTotalsAfterHole = [];
-  private player6ScoresTotalsAfterHole = [];
+  public player1ScoresTotalsAfterHole = [];
+  public player2ScoresTotalsAfterHole = [];
+  public player3ScoresTotalsAfterHole = [];
+  public player4ScoresTotalsAfterHole = [];
+  public player5ScoresTotalsAfterHole = [];
+  public player6ScoresTotalsAfterHole = [];
 
   @Input('playersDirections') playersDirections = 'ver';
   @Input('scorePosX') scorePosX = 100;
@@ -77,7 +77,7 @@ export class ScoreEditingComponent implements OnInit {
   }
 
 
-  writeScores(callback) {
+  writeScores(callback?) {
 
     this.canvasHandle.refreshCanvas();
     this.ctx = this.canvasHandle.context;

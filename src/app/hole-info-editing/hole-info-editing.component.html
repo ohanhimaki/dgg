@@ -70,14 +70,14 @@
         </p>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [hidden]="!holeNumbersCheck">
           <input class="mdl-textfield__input" type="text" [(ngModel)]="holeNumbers" (change)="holeNumbersSeparated=inputSeparator(holeNumbers)">
-          <label class="mdl-textfield__label" for="coursepars">Hole numbers</label>
+          <label class="mdl-textfield__label" for="coursepars">Hole numbers, default:1,2,3...</label>
         </div>
 
 
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [hidden]="!holeParsCheck">
           <input class="mdl-textfield__input" type="text" [(ngModel)]="holePars" (change)="holeParsSeparated=inputSeparator(holePars)">
-          <label class="mdl-textfield__label" for="coursepars">Hole pars</label>
+          <label class="mdl-textfield__label" for="coursepars">Hole pars, default:3,3,3...</label>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [hidden]="!holeDistancesCheck">

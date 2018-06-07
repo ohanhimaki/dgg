@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { ScoreGraphicsComponent } from './score-graphics/score-graphics.component';
@@ -20,7 +19,6 @@ import { HoleInfoEditingComponent } from './hole-info-editing/hole-info-editing.
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     ScoreGraphicsComponent,
     CanvasComponent,

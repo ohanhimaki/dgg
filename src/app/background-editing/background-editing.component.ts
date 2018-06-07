@@ -66,15 +66,6 @@ export class BackgroundEditingComponent implements OnInit {
 
   }
 
-
-
-
-  // INPUT
-
-
-  // private rectangleColor: string = "#127bdc";
-
-
   // Features
   saveCanvas() {
     this.ctx = this.canvasHandle.givectx();

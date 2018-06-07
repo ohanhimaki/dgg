@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+
 import { CanvasComponent } from '../canvas/canvas.component';
 import { DisplayerService } from '../displayer.service';
 import { CanvasHandleService } from '../canvas-handle.service';

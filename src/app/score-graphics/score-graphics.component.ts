@@ -20,4 +20,6 @@ export class ScoreGraphicsComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
 }

@@ -27,6 +27,8 @@ export class HoleInfoEditingComponent implements OnInit {
   @Input('holeNumbersCheck') holeNumbersCheck  = true;
   @Input('holeParsCheck') holeParsCheck  = true;
   @Input('holeDistancesCheck') holeDistancesCheck  = true;
+  @Input('holeDistancesUnit') holeDistancesUnit  = true;
+  @Input('holeDistancesBoth') holeDistancesBoth  = false;
 
   @Input('holePars') holePars: string;
   @Input('holeNumbers') holeNumbers: string;
@@ -34,22 +36,29 @@ export class HoleInfoEditingComponent implements OnInit {
 
   @Input('holeNumbersPosX') holeNumbersPosX = 100;
   @Input('holeNumbersPosY') holeNumbersPosY = 100;
-  @Input('holeParsPosX') holeParsPosX = 100;
-  @Input('holeParsPosY') holeParsPosY = 100;
-  @Input('holeDistancesPosX') holeDistancesPosX = 100;
-  @Input('holeDistancesPosY') holeDistancesPosY = 100;
+  @Input('holeParsPosX') holeParsPosX = 300;
+  @Input('holeParsPosY') holeParsPosY = 50;
+  @Input('holeDistancesPosX') holeDistancesPosX = 300;
+  @Input('holeDistancesPosY') holeDistancesPosY = 150;
 
-  @Input('holeNumbersSize') holeNumbersSize = 100;
+  @Input('holeDistancesBothPosX') holeDistancesBothPosX = 300;
+  @Input('holeDistancesBothPosY') holeDistancesBothPosY = 250;
+
+  @Input('holeNumbersSize') holeNumbersSize = 80;
   @Input('holeNumbersFont') holeNumbersFont = 'Arial';
   @Input('holeNumbersColor') holeNumbersColor = '#ffffff';
 
-  @Input('holeParsSize') holeParsSize = 100;
+  @Input('holeParsSize') holeParsSize = 80;
   @Input('holeParsFont') holeParsFont = 'Arial';
   @Input('holeParsColor') holeParsColor = '#ffffff';
 
-  @Input('holeDistancesSize') holeDistancesSize = 100;
+  @Input('holeDistancesSize') holeDistancesSize = 80;
   @Input('holeDistancesFont') holeDistancesFont = 'Arial';
   @Input('holeDistancesColor') holeDistancesColor = '#ffffff';
+
+  @Input('holeDistancesBothSize') holeDistancesBothSize = 80;
+  @Input('holeDistancesBothFont') holeDistancesBothFont = 'Arial';
+  @Input('holeDistancesBothColor') holeDistancesBothColor = '#ffffff';
 
   public holeParsSeparated = [];
   public holeNumbersSeparated = [];
@@ -66,6 +75,15 @@ export class HoleInfoEditingComponent implements OnInit {
     this.ctx.globalAlpha = 1;
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
+
+    let distanceConverted = 0;
+    let distanceUnit = 'm';
+    let distanceUnitBoth = 'ft';
+    if (!this.holeDistancesUnit) {
+      distanceUnit = 'ft';
+      distanceUnitBoth = 'm';
+    }
+
 
     if (this.holeNumbersCheck) {
       if (!this.holeNumbersSeparated[this.hole]) {
@@ -90,7 +108,24 @@ export class HoleInfoEditingComponent implements OnInit {
     }
     this.ctx.font = this.holeDistancesSize + 'px ' + this.holeDistancesFont;
     this.ctx.fillStyle = this.holeDistancesColor;
-    this.ctx.fillText(this.holeDistancesSeparated[this.hole], this.holeDistancesPosX, this.holeDistancesPosY);
+    this.ctx.fillText(this.holeDistancesSeparated[this.hole] + distanceUnit, this.holeDistancesPosX, this.holeDistancesPosY);
+  }
+
+  if (this.holeDistancesBoth) {
+    if (!this.holeDistancesSeparated[this.hole]) {
+      this.holeDistancesSeparated.push(' ');
+    }
+    if (this.holeDistancesUnit) {
+      distanceConverted = this.holeDistancesSeparated[this.hole] * 3.28084;
+
+    } else {
+      distanceConverted = this.holeDistancesSeparated[this.hole] * 0.3048;
+    }
+
+
+    this.ctx.font = this.holeDistancesBothSize + 'px ' + this.holeDistancesBothFont;
+    this.ctx.fillStyle = this.holeDistancesBothColor;
+    this.ctx.fillText(Math.round(distanceConverted) + distanceUnitBoth, this.holeDistancesBothPosX, this.holeDistancesBothPosY);
   }
 
     // tslint:disable-next-line:no-unused-expression
